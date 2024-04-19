@@ -23,6 +23,7 @@ class CategoryController extends AbstractController
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            $category->setAuthor($this->getUser());
             $manager->persist($category);
             $manager->flush();
 

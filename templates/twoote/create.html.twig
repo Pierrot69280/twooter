@@ -15,14 +15,15 @@
 
                         <div class="mb-3">
                             {{ form_label(formulaire.content, 'Contenu', {'label_attr': {'class': 'form-label required'}}) }}
-                            {{ form_widget(formulaire.content, {'attr': {'class': 'form-control', 'placeholder': 'Your text goes here, also you can optionally upload an image'}}) }}
+                            {{ form_widget(formulaire.content, {'attr': {'class': 'form-control', 'placeholder': 'Ton contenue ici'}}) }}
                         </div>
 
                         <div class="mb-3">
                             {{ form_label(formulaire.category, 'Category', {'label_attr': {'class': 'form-label required'}}) }}
-                            {{ form_widget(formulaire.category, {'attr': {'class': 'form-control', 'placeholder': 'Your text goes here, also you can optionally upload an image'}}) }}
+                            {{ form_widget(formulaire.category, {'attr': {'class': 'form-control', 'placeholder': 'Ton # ?'}}) }}
                         </div>
 
+                        <a href="{{ path('app_category') }}" type="submit" class="btn btn-warning">Nouveau #</a>
                         <button type="submit" class="btn btn-success">{{ retwoot ? 'retwoot' : 'twoot' }}</button>
                         {{ form_end(formulaire) }}
                     </div>

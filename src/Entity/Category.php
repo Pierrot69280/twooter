@@ -23,6 +23,10 @@ class Category
     #[ORM\ManyToMany(targetEntity: Twoote::class, mappedBy: "category")]
     private Collection $twoote;
 
+    #[ORM\ManyToOne(inversedBy: 'categorys')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
+
     public function __construct()
     {
         $this->twoote = new ArrayCollection();
@@ -71,6 +75,18 @@ class Category
                 $twoote->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

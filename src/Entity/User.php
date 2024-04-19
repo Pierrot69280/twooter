@@ -54,6 +54,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $bio = null;
 
+    #[ORM\OneToMany(targetEntity: Category::class, mappedBy: 'author', orphanRemoval: true)]
+    private Collection $categorys;
+
 
     public function __construct()
     {
@@ -62,6 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->replyComments = new ArrayCollection();
         $this->follow = new ArrayCollection();
         $this->followers = new ArrayCollection();
+        $this->categorys = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -301,6 +305,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBio(?string $bio): static
     {
         $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategorys(): Collection
+    {
+        return $this->categorys;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categorys->contains($category)) {
+            $this->categorys->add($category);
+            $category->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        if ($this->categorys->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getAuthor() === $this) {
+                $category->setAuthor(null);
+            }
+        }
 
         return $this;
     }
