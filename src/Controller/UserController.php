@@ -17,6 +17,8 @@ class UserController extends AbstractController
     #[Route('/follow/{id}', name: 'app_follow')]
     public function follow(Security $security, User $user, EntityManagerInterface $manager): Response
     {
+        if ($this->getUser()){return $this->redirectToRoute('app_twootes');}
+
         $me = $security->getUser();
         $me->addFollow($user);
 
@@ -28,6 +30,7 @@ class UserController extends AbstractController
 
     #[Route('/profil/{id}/follows', name: 'app_follow_user')]
     public function followUser(Security $security, User $user): Response{
+
 
 
         return $this->render('user/follows.html.twig', [
@@ -66,6 +69,8 @@ class UserController extends AbstractController
     #[Route('/profil/{id}', name: 'app_profil')]
     public function profil (User $user): Response
     {
+
+        if (!$this->getUser()){return $this->redirectToRoute('app_twootes');}
 
         return $this->render('user/index.html.twig', [
             'user' => $user,
