@@ -39,7 +39,7 @@
                             <h5>{{ twoote.retwoot.content }}</h5>
                             <div class="mt-3 text-center">
                                 {% for category in twoote.retwoot.category %}
-                                <a class="card-text text-primary text-decoration-none" href="{{ path("app_twoote", {id:twoote.id}) }}"> <b>{{ category.name }}</b></a>
+                                <a class="card-text text-primary text-decoration-none" href="{{ path("app_twoote", {id:twoote.id}) }}"> <b>#{{ category.name }}</b>{% if not loop.last %}, {% endif %}</a>
                                 {% endfor %}
                             </div>
                         </div>
