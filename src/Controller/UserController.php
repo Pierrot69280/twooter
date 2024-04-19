@@ -17,7 +17,7 @@ class UserController extends AbstractController
     #[Route('/follow/{id}', name: 'app_follow')]
     public function follow(Security $security, User $user, EntityManagerInterface $manager): Response
     {
-        if ($this->getUser()){return $this->redirectToRoute('app_twootes');}
+        if (!$this->getUser()){return $this->redirectToRoute('app_twootes');}
 
         $me = $security->getUser();
         $me->addFollow($user);
