@@ -33,6 +33,8 @@ class TwooteController extends AbstractController
     #[Route ('/twoote/{id}', name: 'app_twoote')]
     public function show(Twoote $twoote):Response
     {
+        if(!$this->getUser()){return $this->redirectToRoute("app_twootes");}
+
         $commentForm = $this->createForm(CommentType::class, new Comment());
         $replyForms = [];
 
