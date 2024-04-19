@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block body %}
+    <div class="mt-5 container">
+        <h1>Modifier mon profil</h1>
+        <form method="post">
+            {{ form_start(form) }}
+            <div class="mt-3 form-group">
+                {{ form_label(form.username, 'Nom d\'utilisateur') }}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mt-3 form-group">
+                {{ form_label(form.bio, 'Bio') }}
+                {{ form_widget(form.bio, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <button type="submit" class="mt-3 btn btn-primary">Enregistrer les modifications</button>
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}

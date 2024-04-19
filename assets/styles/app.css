@@ -1,3 +1,32 @@
-body {
-    background-color: skyblue;
+body, .card-griz {
+    background-color: #e5e2e2;
+}
+.bg-orange {
+    background-color: #e95420;
+}
+
+.text-orange {
+    color:#e95420 ;
+}
+
+.bg-orange2 {
+    background-color: #b83e10;
+}
+
+.text-orange2 {
+    color: #b83e10;
+}
+
+.btn-violet {
+    background-color: #772953;
+    color: white;
+}
+
+.btn-vert {
+    background-color: #38b44a;
+}
+
+.card-header {
+    background-color: #e95420;
+    color: white;
 }

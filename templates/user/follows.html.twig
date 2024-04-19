@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Abonnements de {{ user.username }}
+{% endblock %}
+
+{% block body %}
+    <div class="mt-5 text-center container">
+        <div class="d-flex align-items-center justify-content-center">
+            <a href="{{ path('app_profil', {'id': user.id}) }}" class=" m-2 btn btn-secondary"><i class="bi bi-arrow-90deg-left"></i></a>
+            <h1>Abonnements de <span class="m-2 text-orange">@{{ user.username }}</span></h1>
+        </div>
+
+        {% if follows is empty %}
+            <p>Cet utilisateur n'a pas d'abonnements.</p>
+        {% else %}
+            {% for follow in follows %}
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="text-orange">@{{ follow.username }}</span></h5>
+                        <p class="card-text"><b>Nom d'utilisateur:</b><span class="text-orange">@{{ follow.username }}</span></p>
+                        <a href="{{ path('app_profil', {'id': follow.id}) }}" class="btn btn-primary">Voir profil</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
