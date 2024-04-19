@@ -25,7 +25,8 @@
                     <a href="{{ path('app_profil', {'id': twoote.author.id}) }}" class="text-white text-decoration-none">
                         @{{ twoote.author.username}}
                     </a>
-                </div>                                {% endif %}
+                </div>
+            {% endif %}
             <div class="m-3 text-white">{{ twoote.createdAt|date("d/m/Y H:i") }}</div>
         </div>
 
