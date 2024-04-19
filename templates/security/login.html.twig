@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter{% endblock %}
 
 {% block body %}
     <form method="post" class="container">
@@ -10,12 +10,12 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Vous êtes connecté en tant que x{{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% endif %}
-        <h1 class="h3 mb-3 font-weight-normal mt-3">Log In</h1>
-        <input type="text" placeholder="Your name" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-        <input type="password" placeholder="Your Password" name="_password" id="password" class="form-control mt-3" autocomplete="current-password" required>
+        <h1 class="h3 mb-3 font-weight-normal mt-3">Se connecter</h1>
+        <input type="text" placeholder="Pseudo" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+        <input type="password" placeholder="Mot de Passe" name="_password" id="password" class="form-control mt-3" autocomplete="current-password" required>
 
         <input type="hidden" name="_csrf_token"
                value="{{ csrf_token('authenticate') }}"
@@ -33,7 +33,7 @@
         #}
 
         <button class="btn btn-vert text-white mt-3" type="submit">
-            Sign in
+            Se connecter
         </button>
     </form>
 {% endblock %}
